@@ -25,9 +25,10 @@ namespace WebApplication1.Controllers
 
         public IActionResult Hello(string name)
         {
-            if (name == null) ViewData["Message"] = "Hello anonymus!";
-            else ViewData["Message"] = "Hello " + name + '!';
-            return View();
+            Model model;
+            if (name == null) model = new Model("Anonymus");
+            else model = new Model(name) ;
+            return View(model);
         }
 
         public IActionResult Privacy()
